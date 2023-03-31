@@ -43,7 +43,7 @@ const Curd = ({userId}) => {
 
   return (
   <div style={taskContenar}>
-   <Card style={{width:600,height:"auto" ,margin:"5px 0px",padding:"10px 0px"}}>
+   <Card style={{width:600,height:"auto" ,margin:"5px 0px",padding:"0px 0px"}}>
     <h3 style={{textAlign:"center",fontSize:"27px",marginBottom:"20px"}} >Add-Task </h3>
     <Input type="number" placeholder="Enter task*"
           onChange={(e) => setId(e.target.value)}

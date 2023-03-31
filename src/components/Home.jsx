@@ -5,7 +5,7 @@ import CurdTable from "./CurdTable.jsx"
 const Home = ({userId}) => {
  
   return (
-    <div style={{overflowX:"hidden"}}>
+    <div className='homeContenar'>
       
       <Curd userId={userId}  />
       <CurdTable userId={userId} />

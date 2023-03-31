@@ -36,3 +36,7 @@ table tbody tr {
 table tbody tr:nth-child(odd) {
 	background-color: #ffffff;
 }
+.homeContenar{
+	overflow-x: hidden;
+	background-color:antiquewhite;
+}
