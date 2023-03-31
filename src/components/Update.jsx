@@ -14,17 +14,17 @@ const Update = ({id,titles,discriptions,fetchData,userId}) => {
         
     };
 
-    const updatehandle = (id,userId) => {
+    const updatehandle = (id,ids) => {
         
-      axios.put(`https://jsonsever.onrender.com/task/${id}`,{title,discription})
-      .then(res=>fetchData())
+      axios.put(`https://jsonsever.onrender.com/task/${id}`,{ids,title,discription})
+      .then(res=>fetchData(userId))
       .catch((err=>alert(err)))
       setTitle("")
       setDiscription("")
       setIsModalOpen(false);
     };
 
-    const handleCancel = ( ) => {
+    const handleCancel = () => {
          
         setIsModalOpen(false);
     };

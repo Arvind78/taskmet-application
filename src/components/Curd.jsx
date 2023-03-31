@@ -18,8 +18,8 @@ const Curd = ({userId}) => {
   }
   const addTaskHandler = (e) => {
     e.preventDefault()
-    if(id===""){
-      alert("Please enter task id");
+    if(id.length<4 && id.length>4 ){
+      alert("Please enter 4 digit randon id")
       return false;
      }
       if(title===""){

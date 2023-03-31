@@ -18,11 +18,11 @@ const CurdTable = ({userId}) => {
     },[])
 
     
-    const deleteHandler =(id)=>{
+    const deleteHandler =(id,userId)=>{
       const confirm1 = confirm("you want to remove task ")
     
       if(confirm1){
-      axios.delete(`https://jsonsever.onrender.com/task/${id}`).then(res=>fetchData())
+      axios.delete(`https://jsonsever.onrender.com/task/${id}`).then(res=>fetchData(userId))
       .catch((err)=>alert(err))  
       }
     }
@@ -49,10 +49,10 @@ const CurdTable = ({userId}) => {
       <td><TextArea cols={4} readOnly={true} value={res.title} />  </td>
       <td> <TextArea cols={4} value={res.discription}   readOnly={true}/>   </td>
       <td> <Update id={res.id} titles={res.title} discriptions={res.discription} 
-       fetchData={fetchData} userId={userId}
+         fetchData={fetchData} userId={userId}
       /></td>
       <td><Button type='primary' size='large' danger 
-    style={{width:"100%"}} onClick={()=>deleteHandler(res.id)}>Delete</Button></td>
+    style={{width:"100%"}} onClick={()=>deleteHandler(res.id,userId)}>Delete</Button></td>
  </tr>
       ))
     
