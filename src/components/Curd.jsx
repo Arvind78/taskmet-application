@@ -14,7 +14,8 @@ const Curd = ({userId}) => {
   display:"flex",
   justifyContent:"center",
   flexDirection:"column",
-  alignItems:"center"
+  alignItems:"center",
+  margin:"10px 0"
   }
   const addTaskHandler = (e) => {
     e.preventDefault()
