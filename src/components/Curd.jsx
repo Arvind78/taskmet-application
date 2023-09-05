@@ -1,24 +1,16 @@
 import React,{useState} from 'react'
 import axios from "axios"
- import {Card ,Button,Input, Alert} from "antd";
+ import {Card ,Button,Input,Modal} from "antd";
  const { TextArea } = Input;
 const Curd = ({userId}) => {
-  const[id,setId]=useState("")
-  const [title ,setTitle] =useState("")
-  const [discription,setDescription]=useState("")
-    const ids = userId
- 
-  const taskContenar = {
-  height:"60vh",
-  width :"100vw",
-  display:"flex",
-  justifyContent:"center",
-  flexDirection:"column",
-  alignItems:"center",
-  margin:"10px 0px"
-  }
-  const addTaskHandler = (e) => {
-    e.preventDefault()
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+   const handleOk = () => {
+  
     if(id.length===0 ){
       alert("Please enter randon id")
       return false;
@@ -39,14 +31,36 @@ const Curd = ({userId}) => {
     setDescription("")
      setId("")
     
-    
+ 
   };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  const[id,setId]=useState("")
+  const [title ,setTitle] =useState("")
+  const [discription,setDescription]=useState("")
+    const ids = userId
+ 
+  const taskContenar = {
+  
+  display:"flex",
+  justifyContent:"center",
+  flexDirection:"column",
+  alignItems:"center",
+  margin:"10px 0px"
+  }
+ 
 
   return (
   <div style={taskContenar}>
-   <Card style={{width:600,height:"auto" ,margin:"15px 0px",padding:"0px 0px"}}>
-    <h3 style={{textAlign:"center",fontSize:"27px",marginBottom:"20px"}} >Add-Task </h3>
-    <Input type="number" placeholder="Enter task*"
+     <Button type="primary" onClick={showModal}>
+        Add Task
+      </Button>
+      <Modal title="Add task " open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+     
+    <h3 style={{textAlign:"center",fontSize:"20px",marginBottom:"20px"}} >Taskment Curd Application </h3>
+      <Input type="datetime-local" placeholder="Enter task*"
           onChange={(e) => setId(e.target.value)}
           style={{ margin: "10px 0px", padding: "10px" }} value={id}/>
 
@@ -56,11 +70,11 @@ const Curd = ({userId}) => {
 
     <TextArea  rows={4}  placeholder="Enter task description*"
           onChange={(e) => setDescription(e.target.value)}
-          style={{ margin: "10px 0px",   }} value={discription} />
+          style={{ margin: "10px 0px"}} value={discription} />
+ 
+      </Modal>
 
-         <Button type="primary" size="large" style={{width:"100%"}}
-         onClick={addTaskHandler}>Add task</Button>
-   </Card>
+
        
    </div>
   )

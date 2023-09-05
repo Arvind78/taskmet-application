@@ -7,7 +7,7 @@ const Home = ({userId}) => {
   return (
     <div className='homeContenar'>
       
-      <Curd userId={userId}  />
+      {/* <Curd userId={userId}  /> */}
       <CurdTable userId={userId} />
     </div>
   )

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Button,Input} from "antd";
 import axios from "axios"
 import Update from './Update.jsx';
+import Curd from './Curd.jsx';
  const { TextArea } = Input;
 const CurdTable = ({userId}) => {
     const [data,setData]=useState([])
@@ -26,14 +27,27 @@ const CurdTable = ({userId}) => {
       .catch((err)=>alert(err))  
       }
     }
+
+
+   const btn ={
+      width:"100%",
+      display:"flex",
+      justifyContent:"space-between",
+      alignItems:"center",
+      padding:"10px"
+   }
   return (
     <>
-    <Button type='primary' size='large'
-     onClick={()=>fetchData(userId)} style={{marginLeft:"90%",marginBottom:"5px"}} >RefreshData</Button>
+    <div style={btn}>
+    <Button type='primary'  
+     onClick={()=>fetchData(userId)}  >RefreshData</Button>
+  <Curd userId={userId}/>
+    </div>
+
     <table>
     <thead>
       <tr>
-        <td>Id</td>
+        <td>Date</td>
         <td>Title</td>
         <td>Description</td>
         <td>Update</td>

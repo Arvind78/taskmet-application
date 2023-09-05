@@ -85,7 +85,7 @@ const Login = ({setIsLogin,getUserId}) => {
     <div style={contenar}>
 
       <Card style={loginContenar}>
-        <h3 style={{ textAlign: "center", marginBottom: "10px", fontSize: "22px" }}>Curd Application</h3>
+        <h3 style={{ textAlign: "center", marginBottom: "10px", fontSize: "22px" }}>Taskment Curd Application</h3>
         <Input type="email" placeholder="Enter your email"
           onChange={(e) => setEmail(e.target.value)}
           style={{ margin: "10px 0px", padding: "8px" }} value={email} />
