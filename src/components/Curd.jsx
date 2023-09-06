@@ -57,17 +57,20 @@ const Curd = ({userId}) => {
      <Button type="primary" onClick={showModal}>
         Add Task
       </Button>
-      <Modal title="Add task " open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="Add new task " open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
      
-    <h3 style={{textAlign:"center",fontSize:"20px",marginBottom:"20px"}} >Taskment Curd Application </h3>
+    <p style={{textAlign:"center",fontSize:"20px",marginBottom:"20px",backgroundColor:"black",
+   padding:"5px",borderRadius:"5px",color:"#fff"
+  }} >Taskment Curd Application </p>
+     <label htmlFor="">Choosse date / time</label>
       <Input type="datetime-local" placeholder="Enter task*"
           onChange={(e) => setId(e.target.value)}
           style={{ margin: "10px 0px", padding: "10px" }} value={id}/>
-
+     <label htmlFor="">Task title</label>
    <Input type="text" placeholder="Enter task title*"
           onChange={(e) => setTitle(e.target.value)}
           style={{ margin: "10px 0px", padding: "10px" }} value={title} />
-
+     <label htmlFor="">Task discription</label>
     <TextArea  rows={4}  placeholder="Enter task description*"
           onChange={(e) => setDescription(e.target.value)}
           style={{ margin: "10px 0px"}} value={discription} />

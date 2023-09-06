@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import {app}  from "./Firebase.js"
-import { Card, Input, Button ,Alert} from 'antd';
+import { Card, Input, Button ,Alert, notification} from 'antd';
 import { useNavigate } from "react-router-dom"
 import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 const Login = ({setIsLogin,getUserId}) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  
+  const [api, contextHolder] = notification.useNotification();
   const Navigate = useNavigate()
   const contenar = {
     height: "90vh",
@@ -41,7 +41,7 @@ const Login = ({setIsLogin,getUserId}) => {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-     alert("user sucussfully signup!")
+     alert("User Successfully Signup")
      if(user){
       setIsLogin(true)
       setEmail("")
@@ -50,12 +50,16 @@ const Login = ({setIsLogin,getUserId}) => {
      
      
      getUserId(user.uid)
-
+  
   })
   .catch((error) => {
     const errorCode = error.code;
     error.message;
-    alert(error.message ,errorCode)
+    api.error({
+      message: `User Signup Field`,
+      description:`${error.message} ${errorCode}`,
+      placement:"top",
+    });
     setIsLogin(false)
   });
 
@@ -77,13 +81,18 @@ const Login = ({setIsLogin,getUserId}) => {
      })
      .catch((error) => {
        const errorCode = error.code;
-       alert(error.message ,errorCode)
+     
+       api.error({
+        message: `User Login Field`,
+        description:`${error.message} ${errorCode}`,
+        placement:"top",
+      });
        setIsLogin(false)
      });
   }
   return (
     <div style={contenar}>
-
+{contextHolder}
       <Card style={loginContenar}>
         <h3 style={{ textAlign: "center", marginBottom: "10px", fontSize: "22px" }}>Taskment Curd Application</h3>
         <Input type="email" placeholder="Enter your email"
